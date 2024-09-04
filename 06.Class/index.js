@@ -28,5 +28,5 @@ app.get("/profile/:username/:age",function(req,res){
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++PROFILE END HERE++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-app.listen(3000) 
+app.listen(3002) 
 

@@ -3,11 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello bhaiyo</h1>
-    TODO:
-    <!-- Have to complete the form as well -->
+    <div class="main min-h-screen w-full bg-zinc-900 text-white">
+        <form method="post"  action="/create" class=" p-10 form flex flex-col gap-5">
+            <input class="bg-zinc-800 rounded-md outline-none p-4" placeholder="Title goes here" type="text" name="title" >
+            <textarea class="bg-zinc-800 rounded-md outline-none p-4 resize-none" placeholder="Write your task details here..." name="details"  id=""></textarea>
+            <button type="submit" class="text-white bg-blue-500 max-w-32 rounded-md px-3 py-2">Create File</button>
+        </form>
+
+        <div class="container p-10 flex flex-wrap gap-3">
+           <%if(files.length >0){ %>
+            <% files.forEach(function(val){ %>
+                <div class="card overflow-hidden  form flex flex-col min-w-min bg-zinc-800 rounded-md">
+                <header class="p-2 text-xl text-zinc-600"><%=val%></header> 
+                <a href="" class="text-blue-500 inline-block p-2">Read more...</a>
+             </div>
+
+            <%  }) %>
+         <%} else {  %>
+             
+             <p>Noting Here</p>  
+        <% }%>
+
+           
+        </div>
+
+    </div>
+
 </body>
 </html>
