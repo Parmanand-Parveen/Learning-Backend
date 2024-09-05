@@ -32,4 +32,14 @@ app.get("/files/:filename/delete",function(req,res){
         res.redirect("/")
     })
 })
+app.get("/edit/:filename",function(req,res){
+    console.log(req.params.filename)
+   res.render("edit",{filename:req.params.filename})
+})
+
+app.post("/edit",function(req,res){
+  fs.rename(`./files/${req.body.prev}`,`./files/${req.body.new}`,function(err){
+    res.redirect("/")
+  })
+})
 app.listen(3000)

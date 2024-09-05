@@ -25,8 +25,11 @@
         <% file.forEach(function(val){ %>
             <div class="card bg-zinc-800 py-2 px-4">
                 <h1 class="text-3xl"><%=val%></h1>
+               <div class="flex gap-3">
                 <a href="./files/<%=val%>" class="text-blue-500">Read More...</a>
                 <a href="./files/<%=val%>/delete" class="text-red-500">Delete</a>
+                <a href="/edit/<%=val%>" class="text-green-500">Edit</a>
+               </div>
 
             </div>
          <%  })  %>
