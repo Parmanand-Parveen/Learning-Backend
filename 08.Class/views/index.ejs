@@ -3,10 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
-<body>
+
+<body class="">
+
+<div class=" w-screen h-screen bg-zinc-900">
+    
+    <div class="form p-10">
+        <form action="/create" method="post" class="flex flex-col gap-2">
+           <input type="text" class="p-3 outline-none text-white rounded-md bg-zinc-800 w-full" placeholder="Title goes here..." name="title"> 
+           <textarea class="p-3 outline-none text-white rounded-md bg-zinc-800 w-full resize-none" name="details" id="" placeholder="Write your message here..."></textarea>
+           <button type="submit" class="py-2 px-5 bg-blue-500 hover:bg-blue-600 duration-75 max-w-max rounded-md text-white"> Create File</button>
+        </form>
+    </div>
+
+    <div class="cards p-10 text-white bg-zinc-900 flex flex-wrap gap-4">
+     <% if(file.length >0){ %>
+        <% file.forEach(function(val){ %>
+            <div class="card bg-zinc-800 py-2 px-4">
+                <h1 class="text-3xl"><%=val%></h1>
+                <a href="./files/<%=val%>" class="text-blue-500">Read More...</a>
+                <a href="./files/<%=val%>/delete" class="text-red-500">Delete</a>
+
+            </div>
+         <%  })  %>
+     <% } else { %>
+        <p class="text-zinc-600">Nothing To Show Here</p>
+        <% } %>
+    </div>
+
+
+
+</div>
+
+
 </body>
 </html>
+
+
