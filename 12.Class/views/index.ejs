@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="body h-screen w-screen bg-zinc-900">
+        <form class="p-4 flex flex-col gap-4 text-white" action="/create" method="post">
+            <input class="w-full bg-zinc-800 p-2 outline-none" type="text" placeholder="Name" name="name">
+            <input class="w-full bg-zinc-800 p-2 outline-none" type="text" placeholder="Age"  name="age">
+            <input class="w-full bg-zinc-800 p-2 outline-none" type="text" placeholder="Email" name="email">
+            <button class="py-2 px-4 bg-blue-500 text-white" type="submit">Create User</button>
+        </form>
+    </div>
+     
+    <% users.map(function(val){  %>
+      <div key="<%=val.id%>">
+        <div class="card bg-zinc-800 p-4 text-white">
+            <h1 class="text-3xl"><%=val.name%></h1>
+            <p><%=val.age%></p>
+            <p><%=val.email%></p>
+            <a href="/edit/<%=val._id%>">Edit</a>
+        </div>
+
+      </div>
+   <% } )%>
+
+</body>
+</html>
