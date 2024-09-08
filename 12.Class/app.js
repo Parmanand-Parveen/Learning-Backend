@@ -28,6 +28,16 @@ app.get("/edit/:id",async(req,res)=>{
     res.render("edit.ejs",{user:user})
 })
 
+app.post("/edited/:id",async(req,res)=>{
+       await User.findByIdAndUpdate(req.params.id,req.body)
+      res.redirect("/")
+})
+
+app.get("/delete/:id",async(req,res)=>{
+    const user = await User.findByIdAndDelete(req.params.id)
+    res.redirect("/")
+})
+
 
 
 

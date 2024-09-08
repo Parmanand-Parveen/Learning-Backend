@@ -10,24 +10,29 @@
 <body>
     <div class="body h-screen w-screen bg-zinc-900">
         <form class="p-4 flex flex-col gap-4 text-white" action="/create" method="post">
-            <input class="w-full bg-zinc-800 p-2 outline-none" type="text" placeholder="Name" name="name">
-            <input class="w-full bg-zinc-800 p-2 outline-none" type="text" placeholder="Age"  name="age">
-            <input class="w-full bg-zinc-800 p-2 outline-none" type="text" placeholder="Email" name="email">
+            <input class="w-full rounded-md bg-zinc-800 p-2 outline-none" type="text" placeholder="Name" name="name">
+            <input class="w-full rounded-md bg-zinc-800 p-2 outline-none" type="text" placeholder="Age"  name="age">
+            <input class="w-full rounded-md bg-zinc-800 p-2 outline-none" type="text" placeholder="Email" name="email">
             <button class="py-2 px-4 bg-blue-500 text-white" type="submit">Create User</button>
         </form>
+       <div class="flex gap-4 flex-wrap p-4">
+        <% users.map(function(val){  %>
+            <div class="  max-w-max bg-zinc-800 p-4 text-white" key="<%=val.id%>">
+                    <h1 class="text-3xl"><%=val.name%></h1>
+                    <p><%=val.age%></p>
+                    <p><%=val.email%></p>
+                    <div class="flex gap-3">
+                        <a class="text-blue-500" href="/edit/<%=val._id%>">Edit</a>
+                        <a class="text-red-500" href="/delete/<%=val._id%>">Delete</a>
+                    </div>
+            </div>
+          
+                
+             <% } )%>
+       </div>
     </div>
      
-    <% users.map(function(val){  %>
-      <div key="<%=val.id%>">
-        <div class="card bg-zinc-800 p-4 text-white">
-            <h1 class="text-3xl"><%=val.name%></h1>
-            <p><%=val.age%></p>
-            <p><%=val.email%></p>
-            <a href="/edit/<%=val._id%>">Edit</a>
-        </div>
-
-      </div>
-   <% } )%>
+   
 
 </body>
 </html>
