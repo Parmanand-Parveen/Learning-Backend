@@ -9,7 +9,23 @@
 </head>
 <body>
     <div class="body h-screen w-screen bg-zinc-900">
-        <div class="page1"></div>
+        <div class="page1">
+
+            <div class="form p-10"> 
+                <h2 class="text-3xl text-white mb-2">Create User</h2>
+                <form action="/create" method="post">
+                    <input class="py-2 px-4 bg-zinc-700 w-full outline-none text-white rounded-md mb-2" placeholder="Name" type="text" name="name">
+                    <input class="py-2 px-4 bg-zinc-700 w-full outline-none text-white rounded-md mb-2" placeholder="age"  type="number" name="age">
+                    <input class="py-2 px-4 bg-zinc-700 w-full outline-none text-white rounded-md mb-2" placeholder="password" type="text" name="password">
+                    <input class="py-2 px-4 bg-zinc-700 w-full outline-none text-white rounded-md mb-2" placeholder="email"  type="email" name="email">
+                    <input class="py-2 px-4 bg-zinc-700 w-full outline-none text-white rounded-md mb-2" placeholder="Image url" type="text" name="image">
+                    <button class="py-2 px-4 bg-blue-500 text-white" type="submit">Create User</button>
+                </form> 
+                   <Button class="py-2 px-4 bg-blue-500 text-white mt-2"><a href="/login">Login</a></Button>
+            </div>
+
+
+        </div>
     </div>
     
 </body>

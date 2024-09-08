@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="body h-screen w-screen bg-zinc-900">
+        <div class="page1">
+
+            <div class="form p-10"> 
+                <h2 class="text-3xl text-white mb-2">Create User</h2>
+                <form action="/create" method="post">
+                    <input class="py-2 px-4 bg-zinc-700 w-full outline-none text-white rounded-md mb-2" placeholder="Name" type="text" name="name" value="<%=user.name%>">
+                    <input class="py-2 px-4 bg-zinc-700 w-full outline-none text-white rounded-md mb-2" placeholder="age"  type="number" name="age" value="<%=user.age%>">
+                    <input class="py-2 px-4 bg-zinc-700 w-full outline-none text-white rounded-md mb-2" placeholder="password" type="text" name="password" value="<%=user.password%>">
+                    <input class="py-2 px-4 bg-zinc-700 w-full outline-none text-white rounded-md mb-2" placeholder="email"  type="email" name="email" value="<%=user.email%>">
+                    <input class="py-2 px-4 bg-zinc-700 w-full outline-none text-white rounded-md mb-2" placeholder="Image url" type="text" name="image" value="<%=user.image%>">
+                </form> 
+                <a href="/logout" class="py-2 px-4 bg-blue-500 text-white mt-2">Logout</a>
+                  
+            </div>
+
+
+        </div>
+    </div>
+    
+</body>
+</html>
