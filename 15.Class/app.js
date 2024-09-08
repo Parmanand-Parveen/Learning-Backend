@@ -15,20 +15,22 @@ app.get("/", async (req, res) => {
   res.render("index");
 });
 
-app.post("/create", async (req, res) => {
+app.post("/create",  (req, res) => {
 
     const { name, age, email, password, image } = req.body;
-    bcrypt.hash(password, saltRounds, function (err, hash) {
-      const users = new User({
+    bcrypt.hash(password, saltRounds,  async(err, hash)=> {
+      const users = await User.create({
         name,
         age,
         email,
         password: hash,
         image,
-      });
-      users.save();
+      });  
+       const token = jwt.sign({email:users.email},"shhhh")
+      res.cookie("token",token)
+      res.render("profile",{user:users});   
     });
-    res.redirect("/");
+ 
   
 });
 
