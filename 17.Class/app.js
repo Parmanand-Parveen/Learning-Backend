@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 const path = require("path")
 const bcrypt = require("bcrypt")
-const cookie = require("cookie-parser")
+const cookieparser = require("cookie-parser")
 const saltRound = 10
 const userModel = require("./models/user.model")
 const postModel = require("./models/post.model")
@@ -13,6 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(express.static(path.join(__dirname,"public")))
 app.set("view engine","ejs")
+app.use(cookieparser())
 
 
 app.get("/",(req,res)=>{
@@ -41,7 +42,7 @@ app.post("/create/account",async (req,res)=>{
                 password:hased,
                 
             })  
-            const token = jwt.sign({email:user.email},"shhh")
+            const token = jwt.sign({email:user.email,id:user._id},"shhh")
             res.cookie("token",token)
             res.redirect("/")
         })
@@ -52,13 +53,11 @@ app.post("/create/account",async (req,res)=>{
 app.post("/logins",async (req,res)=>{
     const {email,password} = req.body
     const user = await userModel.findOne({email})
-    console.log(user)
     if(user){
         const hashedpassword = user.password
         bcrypt.compare(password,hashedpassword, (err,result)=>{
-            console.log(result)
             if(result){
-                const token = jwt.sign({email:user.email},"shhh")
+                const token = jwt.sign({email:user.email,id:user._id},"shhh")
                 res.cookie("token",token)
                 res.redirect("/")
             } else{
@@ -71,20 +70,21 @@ app.post("/logins",async (req,res)=>{
 })
 
 app.get("/profile",isLoggedIn,(req,res)=>{
-    console.log(req.body)
+    console.log(req.user)
     res.send("Welcome to profile Page")
 })
 
+
 function isLoggedIn(req,res,next){
-    console.log(req.cookies)
-    const token = req.cookies.token
-    if(token){
-        const user = jwt.verify(token,"shhh")
-        req.user = user
-        next()
-    } else{
-        res.send("You must be loged in")
-    }
+   const token = req.cookies.token
+   if(token){
+     const user = jwt.verify(token,"shhh")
+     req.user = user
+     next()
+   } else {
+    res.send("You must Log In")
+   }
+
 }
 
 
