@@ -97,6 +97,7 @@ function isLoggedOut(req,res,next){
 app.post("/post",isLoggedIn,async(req,res)=>{
     const {email,id} = req.user
     const user = await userModel.findOne({email})
+    console.log(user)
     const post = await postModel.create({
          user:user._id,
          content:req.body.content
