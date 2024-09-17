@@ -106,6 +106,29 @@ app.post("/edit/:id",isLoggedIn, async(req,res)=>{
     res.redirect("/profile")
 })
 
+app.get("/login",(req,res)=>{
+    res.render("login")
+})
+
+
+app.post("/logins",async (req,res)=>{
+    const {email,password} = req.body
+    const user = await userModel.findOne({email})
+    if(user){
+        bcrypt.compare(password,user.password,(err,result)=>{
+            if(result){
+                const token = jwt.sign({email:user.email,id:user._id},"111")
+                res.cookie("token",token)
+                res.redirect("/profile")
+            } else {
+                res.send("Somthing went wrong")
+            }
+        })
+    } else {
+        res.send("Something went wrong")
+    }
+})
+
 
 
 
