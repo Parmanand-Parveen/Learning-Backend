@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <title>Document</title>
+</head>
+
+<body class="bg-zinc-900">
+
+    <form class="p-5" action="/edit/<%=post._id%>" method="post">
+        <textarea class="resize-none p-2 bg-transparent border border-zinc-700 text-white rounded-md mt-4" cols="50" rows="4"
+            name="content" placeholder="What's in your mind"><%=post.content%></textarea>
+        <button class="block mt-2 px-3 py-2 bg-yellow-500 hover:bg-yellow-800 transition-all rounded-md" type="submit">Update
+            Post</button>
+    </form>
+</body>
+
+</html>
